@@ -1,0 +1,130 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+command /shopmenu:
+	trigger:
+		openShopMenu(player)
+
+function openShopMenu(p: player):
+	set {_gui} to chest inventory with 3 rows named "&6Shop Menu"
+
+	set slot 11 of {_gui} to iron pickaxe named "&eTools Shop" with lore "&7Click to for some Tools!"
+	set slot 13 of {_gui} to diamond chestplate named "&bArmory Shop" with lore "&7Click to browse for some Armory!"
+	set slot 15 of {_gui} to conduit named "&cCompressor Shop" with lore "&7Click to Compress your items!"
+
+	open {_gui} to {_p}
+
+on inventory click:
+	if name of event-inventory is "&6Shop Menu":
+		cancel event
+		if event-item is iron pickaxe named "&eTools Shop":
+			openToolsGUI(player)
+		if event-item is diamond chestplate named "&bArmory Shop":
+			openArmorGUI(player)
+		if event-item is conduit named "&cCompressor Shop":
+			openCompressorGUI(player)
+
+function openCompressorGUI(p: player):
+	set {_gui} to chest inventory with 5 rows named "Compressor GUI"
+
+	set slot 18 of {_gui} to oak log named "&rWooden Compressor"
+	set slot 19 of {_gui} to stone named "&rStone Compressor"
+	set slot 20 of {_gui} to coal block named "&rCoal Compressor"
+	set slot 21 of {_gui} to iron block named "&rIron Compressor"
+	set slot 22 of {_gui} to gold block named "&rGold Compressor"
+	set slot 23 of {_gui} to lapis block named "&rLapis Compressor"
+	set slot 24 of {_gui} to diamond block named "&rDiamond Compressor"
+	set slot 25 of {_gui} to emerald block named "&rEmerald Compressor"
+	set slot 26 of {_gui} to netherite block named "&rNetherite Compressor"
+	open {_gui} to {_p}
+
+function openToolsGUI(p: player):
+	set {_gui} to chest inventory with 5 rows named "Tools GUI"
+
+	set slot 18 of {_gui} to oak log named "&rWooden Tools"
+	set slot 19 of {_gui} to stone named "&rStone Tools"
+	set slot 20 of {_gui} to coal block named "&rCoal Tools"
+	set slot 21 of {_gui} to iron block named "&rIron Tools"
+	set slot 22 of {_gui} to gold block named "&rGold Tools"
+	set slot 23 of {_gui} to lapis block named "&rLapis Tools"
+	set slot 24 of {_gui} to diamond block named "&rDiamond Tools"
+	set slot 25 of {_gui} to emerald block named "&rEmerald Tools"
+	set slot 26 of {_gui} to netherite block named "&rNetherite Tools"
+	open {_gui} to {_p}
+
+function openArmorGUI(p: player):
+	set {_gui} to chest inventory with 5 rows named "Armory GUI"
+
+	set slot 18 of {_gui} to oak log named "&rWooden Armory"
+	set slot 19 of {_gui} to stone named "&rStone Armory"
+	set slot 20 of {_gui} to coal block named "&rCoal Armory"
+	set slot 21 of {_gui} to iron block named "&rIron Armory"
+	set slot 22 of {_gui} to gold block named "&rGold Armory"
+	set slot 23 of {_gui} to lapis block named "&rLapis Armory"
+	set slot 24 of {_gui} to diamond block named "&rDiamond Armory"
+	set slot 25 of {_gui} to emerald block named "&rEmerald Armory"
+	set slot 26 of {_gui} to netherite block named "&rNetherite Armory"
+	open {_gui} to {_p}
+
+on inventory click:
+	if name of event-inventory is "Tools GUI":
+		if event-item is oak log named "&rWooden Tools":
+			execute console command "shopkeeper open Wooden-Tools %player%"
+		if event-item is stone named "&rStone Tools":
+			execute console command "shopkeeper open Stone-Tools %player%"
+		if event-item is coal block named "&rCoal Tools":
+			execute console command "shopkeeper open Coal-Tools %player%"
+		if event-item is iron block named "&rIron Tools":
+			execute console command "shopkeeper open Iron-Tools %player%"
+		if event-item is gold block named "&rGold Tools":
+			execute console command "shopkeeper open Golden-Tools %player%"
+		if event-item is lapis block named "&rLapis Tools":
+			execute console command "shopkeeper open Lapis-Tools %player%"
+		if event-item is diamond block named "&rDiamond Tools":
+			execute console command "shopkeeper open Diamond-Tools %player%"
+		if event-item is emerald block named "&rEmerald Tools":
+			execute console command "shopkeeper open Emerald-Tools %player%"
+		if event-item is netherite block named "&rNetherite Tools":
+			execute console command "shopkeeper open Netherite-Tools %player%"
+	
+	if name of event-inventory is "Armory GUI":
+		if event-item is oak log named "&rWooden Armory":
+			execute console command "shopkeeper open Wooden-Armory %player%"
+		if event-item is stone named "&rStone Armory":
+			execute console command "shopkeeper open Stone-Armory %player%"
+		if event-item is coal block named "&rCoal Armory":
+			execute console command "shopkeeper open Coal-Armory %player%"
+		if event-item is iron block named "&rIron Armory":
+			execute console command "shopkeeper open Iron-Armory %player%"
+		if event-item is gold block named "&rGold Armory":
+			execute console command "shopkeeper open Golden-Armory %player%"
+		if event-item is lapis block named "&rLapis Armory":
+			execute console command "shopkeeper open Lapis-Armory %player%"
+		if event-item is diamond block named "&rDiamond Armory":
+			execute console command "shopkeeper open Diamond-Armory %player%"
+		if event-item is emerald block named "&rEmerald Armory":
+			execute console command "shopkeeper open Emerald-Armory %player%"
+		if event-item is netherite block named "&rNetherite Armory":
+			execute console command "shopkeeper open Netherite-Armory %player%"
+	
+	if name of event-inventory is "Compressor GUI":
+		if event-item is oak log named "&rWooden Compressor":
+			execute console command "shopkeeper open Wooden-Compressor %player%"
+		if event-item is stone named "&rStone Compressor":
+			execute console command "shopkeeper open Stone-Compressor %player%"
+		if event-item is coal block named "&rCoal Compressor":
+			execute console command "shopkeeper open Coal-Compressor %player%"
+		if event-item is iron block named "&rIron Compressor":
+			execute console command "shopkeeper open Iron-Compressor %player%"
+		if event-item is gold block named "&rGold Compressor":
+			execute console command "shopkeeper open Gold-Compressor %player%"
+		if event-item is lapis block named "&rLapis Compressor":
+			execute console command "shopkeeper open Lapis-Compressor %player%"
+		if event-item is diamond block named "&rDiamond Compressor":
+			execute console command "shopkeeper open Diamond-Compressor %player%"
+		if event-item is emerald block named "&rEmerald Compressor":
+			execute console command "shopkeeper open Emerald-Compressor %player%"
+		if event-item is netherite block named "&rNetherite Compressor":
+			execute console command "shopkeeper open Netherite-Compressor %player%"
+
+
+# wood -> stone -> coal -> iron -> gold -> lapis -> diamond -> emerald -> netherite

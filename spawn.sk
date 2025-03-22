@@ -1,0 +1,65 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+on first join:
+	teleport player to {spawn}
+
+on join:
+	teleport player to {spawn}
+
+on player respawn:
+	if player is in world "spawn":
+		send "&cYou have died! Returning to Spawn..." to player
+		teleport player to {spawn}
+
+command /setspawn:
+	permission: op
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		set {spawn} to location of player
+		send "Successfully set Spawn to &a&n%player's x location%, %player's y location%, %player's z location%!" to player
+
+command /spawn:
+	trigger:
+		if {spawn} is set:
+			set {move::%player%} to player
+			if player's gamemode is creative:
+				teleport player to {spawn}
+				delete {move::%player%}
+				stop trigger
+			if player's gamemode is not creative:
+				send action bar "<#E91E63>Teleporting you to spawn in &e&n5 seconds.&r <#E91E63>Don't move!" to player
+				wait 1 second
+				send action bar "<#E91E63>Teleporting you to spawn in &e&n4 seconds.&r <#E91E63>Don't move!" to player
+				if {move::%player%} is not set:
+					send action bar "&cYou moved! Cancelling." to player
+					stop
+				else:
+					wait 1 second
+					send action bar "<#E91E63>Teleporting you to spawn in &e&n3 seconds.&r <#E91E63>Don't move!" to player
+				if {move::%player%} is not set:
+					send action bar "&cYou moved! Cancelling." to player
+					stop
+				else:
+					wait 1 second
+					send action bar "<#E91E63>Teleporting you to spawn in &e&n2 seconds.&r <#E91E63>Don't move!" to player
+				if {move::%player%} is not set:
+					send action bar "&cYou moved! Cancelling." to player
+					stop
+				else:
+					wait 1 second
+					send action bar "<#E91E63>Teleporting you to spawn in &e&n1 second.&r <#E91E63>Don't move!" to player
+				if {move::%player%} is not set:
+					send action bar "&cYou moved! Cancelling." to player
+					stop
+				else:
+					wait 1 second
+			if {move::%player%} is set:
+				teleport player to {spawn}
+				play sound "block.bell.use" to player
+				delete {move::%player%}
+
+on player move:
+	if {move::%player%} is set:
+		delete {move::%player%}
+		send "&cYou moved! Cancelling." to player
+		cancel event

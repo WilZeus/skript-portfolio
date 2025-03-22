@@ -1,0 +1,7 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+on chat:
+	loop all players:
+		if message contains "%loop-player%":
+			replace "%loop-player%" with "&e&n@%loop-player%&r" in the message
+			play sound "minecraft:block.note_block.bell" to loop-player

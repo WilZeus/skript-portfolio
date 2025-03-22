@@ -1,0 +1,79 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+on break:
+	if {autocomp::%player%} is set:
+		if event-item is oak log:
+			if player has 64 oak log:
+				set {_woodcomp} to 1 oak wood named "&x&7&9&5&5&4&8Compressed Wood" with lore "&x&8&B&C&3&4&AUse this at the &6&nTools&x&8&B&C&3&4&A shopkeeper!"
+				enchant {_woodcomp} with mending 1
+				give player {_woodcomp}
+				remove 64 oak log from player's inventory
+				send "&b[AC]&a Successfully compressed Wood!" to player
+		if event-item is stone:
+			if player has 64 stone:
+				set {_stonecomp} to 1 cobblestone named "&7Compressed Stone"
+				enchant {_stonecomp} with mending 1
+				give player {_stonecomp}
+				remove 64 stone from player's inventory
+				send "&b[AC]&a Successfully compressed Stone!" to player
+		if event-item is coal ore:
+			if player has 64 coal:
+				set {_coalcomp} to 1 coal block named "&x&9&E&9&E&9&ECompressed Coal"
+				enchant {_coalcomp} with mending 1
+				give player {_coalcomp}
+				remove 64 coal from player's inventory
+				send "&b[AC]&a Successfully compressed Coal!" to player
+		if event-item is iron ore:
+			if player has 64 iron ingot:
+				set {_ironcomp} to 1 iron block named "&x&F&5&F&5&F&5Compressed Iron"
+				enchant {_ironcomp} with mending 1
+				give player {_ironcomp}
+				remove 64 iron ingot from player's inventory
+				send "&b[AC]&a Successfully compressed Iron!" to player
+		if event-item is gold ore:
+			if player has 64 gold ingot:
+				set {_goldcomp} to 1 gold block named "&eCompressed Gold"
+				enchant {_goldcomp} with mending 1
+				give player {_goldcomp}
+				remove 64 gold ingot from player's inventory
+				send "&b[AC]&a Successfully compressed Gold!" to player
+		if event-item is lapis ore:
+			if player has 64 lapis lazuli:
+				set {_lapiscomp} to 1 lapis block named "&x&1&9&7&6&D&2Compressed Lapis"
+				enchant {_lapiscomp} with mending 1
+				give player {_lapiscomp}
+				remove 64 lapis lazuli from player's inventory
+				send "&b[AC]&a Successfully compressed Lapis!" to player
+		if event-item is diamond ore:
+			if player has 64 diamond:
+				set {_diamondcomp} to 1 diamond block named "&x&0&0&B&C&D&4Compressed Diamond"
+				enchant {_diamondcomp} with mending 1
+				give player {_diamondcomp}
+				remove 64 diamond from player's inventory
+				send "&b[AC]&a Successfully compressed Diamond!" to player
+		if event-item is emerald ore:
+			if player has 64 emerald:
+				set {_emeraldcomp} to 1 emerald block named "&x&8&B&C&3&4&ACompressed Emerald"
+				enchant {_emeraldcomp} with mending 1
+				give player {_emeraldcomp}
+				remove 64 emerald from player's inventory
+				send "&b[AC]&a Successfully compressed Emerald!" to player
+		if event-item is ancient debris:
+			if player has 64 netherite ingot:
+				set {_netheritecomp} to 1 netherite block named "&x&4&2&4&2&4&2Compressed Netherite"
+				enchant {_netheritecomp} with mending 1
+				give player {_netheritecomp}
+				remove 64 netherite ingot from player's inventory
+				send "&b[AC]&a Successfully compressed Netherite!" to player
+
+command /autocomp:
+	aliases: ac
+	trigger:
+		if {autocomp::%player%} is not set:
+			set {autocomp::%player%} to player
+			send "&aSuccessfully enabled Autocompressor!" to player
+			play sound "minecraft:block.note_block.bell" to player
+		else:
+			delete {autocomp::%player%}
+			send "&cSuccessfully disabled Autocompressor!" to player
+			play sound "minecraft:block.note_block.bass" to player

@@ -1,0 +1,25 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+on join:
+	if {drop::%player%} is set:
+		send "<#E91E63>Your drops are enabled! To disable it, do &e&n/drop&r." to player
+	else:
+		send "<#E91E63>Your drops are disabled! To enable it, do &e&n/drop&r." to player
+
+on drop:
+	if {drop::%player%} is not set:
+		cancel event
+		send "&cYou have drops disabled! To enable drops, do this command: &e&n/drop" to player
+		play sound "block.note_block.bit" to player
+
+command /drop:
+	cooldown: 2 seconds
+	trigger:
+		if {drop::%player%} is not set:
+			set {drop::%player%} to player
+			send "&aYou have enabled drops!" to player
+			play sound "ui.button.click" to player
+		else if {drop::%player%} is set:
+			delete {drop::%player%}
+			send "&cYou have disabled drops!" to player
+			play sound "ui.button.click" to player

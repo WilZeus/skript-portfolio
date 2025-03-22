@@ -1,0 +1,75 @@
+# Made by @WilZeus on GitHub under the Apache License 2.0. (wilzeus on discord)
+
+on mine:
+	if {autopickup::%player%} is set:
+		cancel drops
+		set {_list::*} to {_ldrop}, {_d.drop}, {_e.drop}, {_c.drop}, {_i.drop}, {_g.drop}, {_sdrop}, oak log and {_n.drop}
+		if {_list::*} contains event-item:
+			give player event-item
+
+command /autopickup:
+	aliases: apu
+	trigger:
+		if {autopickup::%player%} is not set:
+			set {autopickup::%player%} to player
+			send "&aSuccessfully enabled Auto Pickup!" to player
+			play sound "minecraft:block.note_block.bell" to player
+		else:
+			send "&cSuccessfully disabled Auto Pickup!" to player
+			delete {autopickup::%player%}
+			play sound "minecraft:block.note_block.bass" to player
+
+command /autopickupstatus:
+	trigger:
+		if {autopickup::%player%} is set:
+			send "You have APU enabled!" to player
+		else:
+			send "You have APU disabled!" to player
+
+on break of stone:
+	if {autopickup::%player%} is set:
+		set {_sdrop} to 1 stone
+		cancel drops
+		give player stone
+
+on break of lapis ore:
+	if {autopickup::%player%} is set:
+		set {_ldrop} to 1 lapis lazuli
+		cancel drops
+		give player lapis lazuli
+
+on break of diamond ore:
+	if {autopickup::%player%} is set:
+		set {_d.drop} to 1 diamond
+		cancel drops
+		give player diamond
+
+on break of emerald ore:
+	if {autopickup::%player%} is set:
+		set {_e.drop} to 1 emerald
+		cancel drops
+		give player emerald
+
+on break of coal ore:
+	if {autopickup::%player%} is set:
+		set {_c.drop} to 1 coal
+		cancel drops
+		give player coal
+
+on break of iron ore:
+	if {autopickup::%player%} is set:
+		set {_i.drop} to 1 iron ingot
+		cancel drops
+		give player iron ingot
+
+on break of gold ore:
+	if {autopickup::%player%} is set:
+		set {_g.drop} to 1 gold ingot
+		cancel drops
+		give player gold ingot
+
+on break of ancient debris:
+	if {autopickup::%player%} is set:
+		set {_n.drop} to 1 netherite ingot
+		cancel drops
+		give player netherite ingot
